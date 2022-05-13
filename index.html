@@ -6,21 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Belajar Website</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 </head>
 <body>
     <header id="header">
         <a href="#" class="logo">luthfiaido</a>
         <ul>
             <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Product</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li><a href="https://www.instagram.com/luthfiaido/">Contact</a></li>
         </ul>
     </header>
     <section>
         <img src="back-01.png" alt="mountains" id="back">
-        <h2 id="text"><span>It's just a</span><br>Beginning</h2>
         <img src="mid-01.png" alt="forest" id="mid">
+        <h2 id="text"><span>It's just a</span><br>Beginning</h2>
         <a href="#" id="btn">Start</a>
         <img src="front-01.png" alt="grass" id="front">
     </section>
@@ -44,6 +45,14 @@
         
         </p>
     </div>
+    <button id="topscroll">
+        <i class="material-icons">arrow_upward</i>
+    </button>
+    <div class="scrolltotop">
+        <p>
+            Back to top
+        </p>
+    </div>
     <script>
         let text = document.getElementById('text');
         let back = document.getElementById('back');
@@ -51,7 +60,23 @@
         let btn = document.getElementById('btn');
         let front = document.getElementById('front');
         let header = document.getElementById('header');
-
+        let topscroll = document.getElementById('topscroll');
+        window.scrollBy(0, 10);
+        window.scrollBy(0, -10);
+        btn.addEventListener('click', function(){
+            let id = setInterval(function(){
+                window.scrollBy(0, 2);
+            },10);
+            window.onscroll = function(ev) {
+                if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+                    clearInterval(id);
+                    window.onscroll = null;
+                }
+            };
+        });
+        topscroll.addEventListener('click', function(){
+            window.scrollTo(0, 0);
+        });
         window.addEventListener('scroll', function() {
             let value = window.scrollY;
             text.style.top = 75 + value * -0.3 + '%';
